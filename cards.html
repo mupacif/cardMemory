@@ -1,81 +1,93 @@
+<!-- main layout -->
+
 <head>
   <title>cards</title>
 </head>
 
 <body>
-{{>head}}
-  <h1>StudyJS 3000</h1> 
-  {{>form }}
+
+  {{>head}}
+  
+  <h1>StudyJS 3000</h1> {{>form }}
+  
   {{> base }}
 
- <!-- {{> hello}}-->
+
+  <!-- {{> hello}}-->
 </body>
 
+<!-- the form -->
 <template name="form">
 
- <form role="form" id="card">
-<div class="form-group">
-  <label for="comment">Question:</label>
-  <textarea class="form-control" rows="5" id="question"></textarea>
-</div>
-<div class="form-group">
-  <label for="comment">Answer:</label>
-  <textarea class="form-control" rows="5" id="answer"></textarea>
-</div>
- <input id="level" type="range"  min="0" max="99" onchange="rangevalue.value=value"/><output id="rangevalue">50</output>
-  
-<br>
-<button type="submit" class="btn btn-default">Submit</button>
-</form>
+  <form role="form" id="card">
+    <div class="form-group">
+      <label for="comment">Question:</label>
+      <textarea class="form-control" rows="5" id="question"></textarea>
+    </div>
+    <div class="form-group">
+      <label for="comment">Answer:</label>
+      <textarea class="form-control" rows="5" id="answer"></textarea>
+    </div>
+    <input id="level" type="range" min="0" max="99" onchange="rangevalue.value=value" />
+    <output id="rangevalue">50</output>
+
+    <br>
+    <button type="submit" class="btn btn-default">Submit</button>
+  </form>
 </template>
 
+<!-- /form -->
+<!-- templates --->
+<!-- basic tests hello -->
 <template name="hello">
   <button>Click Me</button>
   <p>You've pressed the button {{counter}} times.</p>
 </template>
 <template name="base">
-	<div class="progress">
-  <div id="ft" class="progress-bar progress-bar-striped active" role="progressbar"
-  aria-valuenow="40" aria-valuemin="0" aria-valuemax="100" style="width:40%">
-    40%
+  <div class="progress">
+    <div id="ft" class="progress-bar progress-bar-striped active" role="progressbar" aria-valuenow="40" aria-valuemin="0" aria-valuemax="100" style="width:40%">
+      40%
+    </div>
   </div>
-</div>
- 	{{#each tasks }}
-		{{>inside}}
-	 ############<br>
-	{{/each}} 
-    
+  {{#each tasks }} {{>inside}} ############
+  <br> {{/each}}
+
 </template>
 
+<!--- liste des matières ---->
 <template name="head">
-<form id="matieres">
-  <input list="matiere" name="matiere" placeholder = "MeteorJS">
-  <datalist id="matiere">
- 	{{#each tasks }}
-    <option value="{{matiere}}"></option>
+  <form id="matieres">
+    <input list="matiere" name="matiere" placeholder="MeteorJS">
+    <datalist id="matiere">
+      {{#each tasks }}
+      <option value="{{matiere}}"></option>
 
-	{{/each}}     
-  </datalist>
-  <button type="submit" class="btn btn-default">Submit</button>
-</form>
-matiere actuelle: {{pwd}} //
- 	{{#each tasks }}
-    		{{matiere}},
-	{{/each}}     
-<br>
+      {{/each}}
+    </datalist>
+    <button type="submit" class="btn btn-default">Submit</button>
+  </form>
+  matiere actuelle: {{pwd}} // {{#each tasks }} {{matiere}}, {{/each}}
+  <br>
 </template>
+
+<!-- /liste des matières -->
+
+<!---- questions ----->
 <template name="inside">
-		<div  class="parent">
-	     question :	{{question}}<br>
-            <div class="child"><pre> answer : {{answer}}</pre><br>
-</div> 
- <input id="{{_id}}" class="level" type="range"  min="0" max="99" value="{{level}}"/>
-<div class="progress">
-  <div class="progress-bar progress-bar-info" role="progressbar" aria-valuenow="50"
-  aria-valuemin="0" aria-valuemax="100" style="width:{{level}}%">
-    {{level}}% Complete 
+  <div class="parent">
+    <div class="question">
+    question : {{question}}<span class="glyphicon glyphicon-remove-circle" aria-hidden="true"></span></div>
+    <br>
+    <div class="child"><pre> answer : {{answer}}</pre>
+      <br>
+    </div>
+    <input id="{{_id}}" class="level" type="range" min="0" max="99" value="{{level}}" />
+    <div class="progress">
+      <div class="progress-bar progress-bar-info" role="progressbar" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100" style="width:{{level}}%">
+        {{level}}% Complete
+      </div>
+    </div>
   </div>
-</div>
- 		</div>
-
 </template>
+
+<!-- questions -->
