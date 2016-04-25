@@ -1,21 +1,26 @@
 <!-- main layout -->
+<template name="mainLayout">
 
-<head>
-  <title>cards</title>
-</head>
+  {{> yield}}
 
-<body>
+</template>
 
-  {{>head}}
-  
-  <h1>StudyJS 3000</h1> {{>form }}
-  
-  {{> base }}
+<template name="main">
+
+  <head>
+    <title>cards</title>
+  </head>
+
+  <body>
+
+    {{>head}}
+
+    <h1>StudyJS 3000</h1> {{>form }} {{> base }}
 
 
-  <!-- {{> hello}}-->
-</body>
-
+    <!-- {{> hello}}-->
+  </body>
+</template>
 <!-- the form -->
 <template name="form">
 
@@ -49,7 +54,7 @@
       40%
     </div>
   </div>
-  {{#each tasks }} {{>inside}} 
+  {{#each tasks }} {{>inside}}
   <br> {{/each}}
 
 </template>
@@ -65,7 +70,7 @@
       {{/each}}
     </datalist>
     <button type="submit" id="load" class="btn btn-default">Load</button>
-    <button  id="delete" class="btn btn-danger">delete</button>
+    <button id="delete" class="btn btn-danger">delete</button>
   </form>
   matiere actuelle: {{pwd}} // {{#each tasks }} {{matiere}}, {{/each}}
   <br>
@@ -77,7 +82,7 @@
 <template name="inside">
   <div class="parent">
     <div class="question">
-    question : {{question}}<span class="glyphicon glyphicon-remove-circle" aria-hidden="true"></span></div>
+      question : {{question}}<span class="glyphicon glyphicon-remove-circle" aria-hidden="true"></span></div>
     <br>
     <div class="child"><pre> answer : {{answer}}</pre>
       <br>
