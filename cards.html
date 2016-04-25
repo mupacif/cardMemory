@@ -49,7 +49,7 @@
       40%
     </div>
   </div>
-  {{#each tasks }} {{>inside}} ############
+  {{#each tasks }} {{>inside}} 
   <br> {{/each}}
 
 </template>
@@ -64,7 +64,8 @@
 
       {{/each}}
     </datalist>
-    <button type="submit" class="btn btn-default">Submit</button>
+    <button type="submit" id="load" class="btn btn-default">Load</button>
+    <button  id="delete" class="btn btn-danger">delete</button>
   </form>
   matiere actuelle: {{pwd}} // {{#each tasks }} {{matiere}}, {{/each}}
   <br>

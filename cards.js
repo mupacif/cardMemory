@@ -3,7 +3,7 @@ if (Meteor.isClient) {
   Session.setDefault('counter', 0);
   Session.setDefault('matiere', 'meteorjs');
   Template.head.events( {
-    'click button': function(e) {
+    'click #load': function(e) {
       e.preventDefault();
       // increment the counter when button is clicked
       //Session.set('matiere', Session.get('counter') + 1);
@@ -12,6 +12,23 @@ if (Meteor.isClient) {
         alert("cours:" + Session.get('matiere'));
       }
       else alert("Entrez un cours");
+    },
+    
+        'click #delete': function(e) {
+      e.preventDefault();
+            var r=confirm("do you want to delete this?");
+      if (r==true) {
+        if($("input").val())
+        {
+        alert("You pressed OK!:");
+            post.remove( {
+        matiere: $("input").val()
+      });
+        }
+        else
+        alert("no thing selected")
+      }
+      
     }
   }
   );

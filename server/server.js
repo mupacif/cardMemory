@@ -14,7 +14,7 @@ return post.find();
 Meteor.methods({
 'insertPost'(doc)
 {
-console.log("server methods"+doc);
+console.log("server methods"+doc.question);
 post.insert(doc);
 }
 
