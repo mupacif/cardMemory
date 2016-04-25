@@ -1,1 +1,132 @@
-/* CSS declarations go here */
+html {
+    background-color:floralwhite ;
+    height: 100hv;  
+}
+
+body {
+    background-color:floralwhite;
+    width:auto;
+    height: 100hv;
+    margin-top: auto;
+    margin-left: auto;
+    margin-right: auto;
+    margin-bottom: 0px;     
+}
+
+#headpic{
+    height:110px;
+    display:flex;
+    width: 470px;
+    margin-right: -5px;
+    margin-top: -110px;
+    float: right;
+}
+
+Header {     
+    padding-left: auto;
+    /*Градиент для различных версий браузеров*/
+          background: rgba(80,53,53,1);
+          background: -moz-linear-gradient(top, rgba(80,53,53,1) 0%, rgba(49,38,38,1) 50%, rgba(43,33,33,1) 51%, rgba(72,51,51,1) 100%);
+          background: -webkit-gradient(left top, left bottom, color-stop(0%, rgba(80,53,53,1)), color-stop(50%, rgba(49,38,38,1)), color-stop(51%, rgba(43,33,33,1)), color-stop(100%, rgba(72,51,51,1)));
+          background: -webkit-linear-gradient(top, rgba(80,53,53,1) 0%, rgba(49,38,38,1) 50%, rgba(43,33,33,1) 51%, rgba(72,51,51,1) 100%);
+          background: -o-linear-gradient(top, rgba(80,53,53,1) 0%, rgba(49,38,38,1) 50%, rgba(43,33,33,1) 51%, rgba(72,51,51,1) 100%);
+          background: -ms-linear-gradient(top, rgba(80,53,53,1) 0%, rgba(49,38,38,1) 50%, rgba(43,33,33,1) 51%, rgba(72,51,51,1) 100%);
+          background: linear-gradient(to bottom, rgba(80,53,53,1) 0%, rgba(49,38,38,1) 50%, rgba(43,33,33,1) 51%, rgba(72,51,51,1) 100%);
+          filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#503535', endColorstr='#483333', GradientType=0 );
+    margin-bottom: 10px;
+    margin-top: -20px;
+    flex-basis: auto;
+    height: 90px;
+    text-align:center;
+    padding-top: 30px;
+    width: calc(100% - 300px);
+    color: bisque;
+    box-shadow: 0 0 7px rgba(0, 0, 0, 2);   
+}
+
+h2 {
+    align-self: center;
+}
+
+section {
+    background-color: white;
+    vertical-align: top;
+    padding: 20px;
+    width:calc(100% - 330px);
+    display: inline-block;
+    
+    
+}
+
+nav {
+     width: 300px;
+     height: 100%;
+     border-right:5px solid rgba(80,53,53,1); 
+     background-color: chocolate;
+     display: inline-block;
+     vertical-align: top;
+     margin-left: 40px;
+     margin-right: 0px;
+     position: fixed;
+     right: 0;
+     box-shadow: 0 0 10px rgba(0,0,0,0.5); 
+}
+
+
+
+#navbar {
+     margin: 0;
+     padding-top: 50px;
+     list-style-type:none;
+     width: 200px;
+}
+
+.parent {
+     border-bottom: 1px solid gray;
+}
+
+.parent {
+    color: #fff;
+    padding: 5px;
+    text-decoration: none;
+    font-weight: bold;
+    display: block;
+}
+
+.parent:hover{
+     box-shadow: 0 0 7px darkkhaki;   
+}
+
+#navs {
+    position: fixed;
+}
+
+ul {
+    list-style-type: none;
+}
+
+a{ color: #fff;
+    padding: 5px;
+    text-decoration: none;
+    font-weight: bold;
+    display: block;
+    
+}
+
+
+h5 {
+    color: black;
+    background-color:chocolate;
+    text-align: left;
+    border-bottom:6px solid rgba(72,51,51,1) ;
+    border-top:6px solid rgba(72,51,51,1);
+    position: fixed;
+    bottom: -28px;
+    width: calc(100% - 305px);
+    opacity: 0.7;
+}
+
+iframe{
+    border:none;
+
+}

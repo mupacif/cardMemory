@@ -97,3 +97,82 @@
 </template>
 
 <!-- questions -->
+<!-- go girl -->
+<template name="book">
+    <body>
+
+        <!-- header -->
+        <header>
+
+
+            <h2>My eBook : Ultimate Philosophy. </h2>
+
+
+        </header>
+
+
+
+
+        <!-- sections : title of book+ Little presentation, title of page -->
+
+        <section id="center">
+
+
+            <iframe src="https://drive.google.com/drive/u/0/folders/0B9_dzKbuix08U2xCZDFyR2FUNms" width="100%" height="800px" id="frameDemo"></iframe>
+        </section>
+        <!-- sections :END -->
+        <nav id="navs">
+            <img id="headpic" src="images/header.png">
+            <ul id="navbar">
+                MENU:
+               
+                <li class="parent"><a class="load" data-url="https://docs.google.com/document/d/1ej6qion6J9AoNfF1hvaPZwZgaVc_ei4Adkcw_1RXG4Y/edit" href="#"> ►AndoidDev</a></li>
+                  
+          
+            </ul>
+
+        </nav>
+
+        <h5>Name of object</h5>
+
+        <script type="application/javascript">
+            var scrollTop;
+
+            window.onscroll = function() {
+                myFunction()
+            };
+
+            //menu scroll
+            function myFunction() {
+                scrollTop = (window.pageYOffset !== undefined) ? window.pageYOffset : (document.documentElement || document.body.parentNode || document.body).scrollTop;
+                if (document.body.scrollTop > 100)
+                    document.getElementById("navs").style.top = "0px";
+                else
+                    document.getElementById("navs").style.top = 100 - document.body.scrollTop + "px";
+            }
+        </script>
+
+        <script>
+            //Drop Menu
+            var current = null;
+            $('.child').hide();
+            $('.parent').click(function() {
+                if (!(current != null && current == this)) {
+                    //slideUp all parents.
+                    $(this).siblings('.parent').find('ul').slideUp();
+                    //toggle this one
+                    $(this).find('ul').slideToggle();
+                    current = this;
+                }
+            });
+
+
+            //Iframes
+            $(".load").click(function() {
+
+                $("#frameDemo").attr("src", $(this).data("url"));
+
+            });
+        </script>
+    </body>
+  </template>
