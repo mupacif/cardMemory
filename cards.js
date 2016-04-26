@@ -48,7 +48,7 @@ if (Meteor.isClient) {
   }
   );
   Template.base.onCreated( function() {
-    Meteor.subscribe("post");
+   // Meteor.subscribe("post");
   }
   );
   Template.base.helpers( {
