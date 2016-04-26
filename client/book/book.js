@@ -63,7 +63,7 @@ console.log(data)
 
 
       //erase content of #comment only
-      $("#comment").val("");
+      $("#name,#comment").val("");
     }
     else {
             //show error message if fields are empty
