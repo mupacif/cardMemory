@@ -1,0 +1,102 @@
+<!-- go girl -->
+<template name="book">
+
+    <body>
+
+        <!-- header -->
+        <header>
+
+
+            <h2>My eBook : Ultimate Philosophy. </h2>
+
+
+        </header>
+        <!-- sections : title of book+ Little presentation, title of page -->
+
+        <section id="center">
+
+
+            <iframe src="https://drive.google.com/drive/u/0/folders/0B9_dzKbuix08U2xCZDFyR2FUNms" width="100%" height="800px" id="frameDemo"></iframe>
+        </section>
+        <!-- sections :END -->
+        <nav id="navs">
+            <img id="headpic" src="images/header.png">
+            {{>new}}
+            <ul id="navbar">
+                MENU: 
+                {{>links }}
+
+
+            </ul>
+
+        </nav>
+
+        <h5>Name of object</h5>
+
+        <script type="application/javascript">
+            var scrollTop;
+
+            window.onscroll = function() {
+                myFunction()
+            };
+
+            //menu scroll
+            function myFunction() {
+                scrollTop = (window.pageYOffset !== undefined) ? window.pageYOffset : (document.documentElement || document.body.parentNode || document.body).scrollTop;
+                if (document.body.scrollTop > 100)
+                    document.getElementById("navs").style.top = "0px";
+                else
+                    document.getElementById("navs").style.top = 100 - document.body.scrollTop + "px";
+            }
+        </script>
+
+        <script>
+            //Drop Menu
+            var current = null;
+            $('.child').hide();
+            $('.parent').click(function() {
+                if (!(current != null && current == this)) {
+                    //slideUp all parents.
+                    $(this).siblings('.parent').find('ul').slideUp();
+                    //toggle this one
+                    $(this).find('ul').slideToggle();
+                    current = this;
+                }
+            });
+
+
+            //Iframes
+            $(".load").click(function() {
+
+                $("#frameDemo").attr("src", $(this).data("url"));
+
+            });
+        </script>
+    </body>
+</template>
+
+<template name="links">
+   
+    {{#each links }}
+    
+        <li class="parent"><span class="glyphicon glyphicon-remove-circle" aria-hidden="true"></span><a class="load" data-url="{{url}}" href="#"> {{title}}</a> </li>
+        
+    {{/each}}
+
+</template>
+
+<template name="new">
+ <form name="test">
+          <fieldset id="field">
+              <legend>Information</legend>
+           <p><b>Title:</b><br>
+   <input id="name" name="name" type="text" size="40" placeholder="Write your title">
+  </p>
+  <p>Url<Br>
+   <textarea id="comment" name="Coment" cols="40" rows="3" placeholder="Write your url"></textarea></p>
+  <p><input id="send" type="submit" value="Post">
+   <input id="clear" type="reset" value="Clear"></p>
+   </fieldset>
+</form>
+
+</template>
