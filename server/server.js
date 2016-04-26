@@ -4,11 +4,18 @@ Meteor.onConnection(function(connection){
   Hello++; 
   console.log(Hello);
 });
-/*Meteor.publish("post", function()
+Meteor.publish("post", function()
 {
 return post.find();
 
-});*/
+});
+
+
+Meteor.publish("book", function()
+{
+return book.find();
+
+});
 
  
 Meteor.methods({
