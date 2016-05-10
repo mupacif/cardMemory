@@ -7,5 +7,8 @@
     Template.links.onCreated( function() {
 
      Meteor.subscribe("book");
+      Meteor.subscribe("time");
   }
+  
+ 
   );

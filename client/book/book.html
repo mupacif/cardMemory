@@ -16,7 +16,7 @@
         <section id="center">
 
 
-            <iframe src="https://drive.google.com/drive/u/0/folders/0B9_dzKbuix08U2xCZDFyR2FUNms" width="100%" height="800px" id="frameDemo"></iframe>
+            <iframe src="books" width="100%" height="800px" id="frameDemo"></iframe>
         </section>
         <!-- sections :END -->
         <nav id="navs">
@@ -77,13 +77,17 @@
 
 <template name="links">
    
+
     {{#each links }}
     
-        <li class="parent"><span class="glyphicon glyphicon-remove-circle" aria-hidden="true"></span><a class="load" data-url="{{url}}" href="#"> {{title}}</a> </li>
+        <li class="parent"><span class="glyphicon glyphicon-remove-circle" aria-hidden="true"></span><a class="load" data-url="{{url}}" href="#"> {{title}}</a>{{hms during}} </li>
         
     {{/each}}
 
 </template>
+
+
+
 
 <template name="new">
  <form name="test">

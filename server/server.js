@@ -16,6 +16,14 @@ Meteor.publish("book", function()
 return book.find();
 
 });
+/**
+ * 10/05/16
+ */
+Meteor.publish("time", function()
+{
+return time.find();
+
+});
 
  
 Meteor.methods({
