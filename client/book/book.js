@@ -1,10 +1,14 @@
 var timer = 0;
+var localTimer=0;
 var state = 0;
 var currentLink = null;
+Session.setDefault('timeru', localTimer);
 var timeLeft = function() {
-   // console.log(timer)
     if(vis())
+    {
         timer++
+        Session.set('timeru', localTimer++);
+    }
     
     
 };
@@ -34,6 +38,14 @@ Template.links.helpers({
     links: function() {
         return book.find({});
     },
+    
+
+});
+
+Template.book.helpers({
+    timer:  function() {
+            return Session.get('timeru');
+        }
     
 
 });
@@ -72,7 +84,7 @@ Template.links.events({
                 ///i it exist update it
                 if (currentLink != null && currentLink != this._id) {
                     //get last 
-                    data = time.findOne({
+                    data = book.findOne({
                         _id: currentLink
                     });
 
@@ -80,7 +92,7 @@ Template.links.events({
                     if (data) {
                         //update the time
 
-                        time.update({
+                        book.update({
                             _id: currentLink
                         }, {
                             $set: {
@@ -121,7 +133,8 @@ Template.links.events({
                 if (data) {
                     //get the new time
                     timer = data.during;
-                    console.log("timer:" + timer)
+                    localTimer=0;
+                    //console.log("timer:" + timer)
                 }
                 else {
                     //reset timer
