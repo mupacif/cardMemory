@@ -7,7 +7,7 @@
         <header>
 
 
-            <h2>Subject :{{ subject }}<input id="subject" name="subject" type="text" size="20" placeholder="Subject"> <span class="timeOn">{{hms timer }}</span><span class="timeOff">({{hms timerOff}})</span></h2>
+            <h2>Subject :{{ subject }}<input id="subject" name="subject" type="text" size="20" placeholder="Actual Subject" > <span class="timeOn">{{hms timer }}</span><span class="timeOff">({{hms timerOff}})</span></h2>
             
 
 
@@ -123,7 +123,7 @@
         {{#each stories}}
        <tr>
            <td>{{ localString date}} </td>
-           <td> {{subject}} ~ {{#if matiere}}{{matiere}}{{else}} ? {{/if}} </td>
+           <td> {{subject}} ~ {{#if matiere}}{{matiere}}{{else}}  reading {{/if}} </td>
            <td>{{hms timerOff}}({{pct timerOff timerOn}}% time of work) </td>
         </tr>
        {{/each}}
@@ -148,7 +148,7 @@
         {{#each stories}}
        <tr>
            <td>{{ localString date}} </td>
-           <td> {{subject}} ~ {{#if matiere}}{{matiere}}{{else}} ? {{/if}} </td>
+           <td> {{subject}} ~ {{#if matiere}}{{matiere}}{{else}} reading {{/if}} </td>
            <td>{{hms timerOff}}({{pct timerOff timerOn}}% time of work) </td>
         </tr>
        {{/each}}

@@ -1,9 +1,9 @@
 //temp global passée sur une matière
 var timer = 0;
 //temps passé activement sur une matière
-var localTimer=0;
+ localTimer=0;
 //temps passé hors d'une matière
-var localTimerOff=0;
+ localTimerOff=0;
 
 //id du chapitre courant
 var currentLink = null;
@@ -17,21 +17,6 @@ Session.setDefault('subject');
 Session.setDefault('timeru', localTimer);
 //timer when off
 Session.setDefault('timeruOff', localTimerOff);
-
-
-var timeLeft = function() {
-    if(vis())
-    {
-        timer++
-        Session.set('timeru', localTimer++);
-    }
-    localTimerOff++;
-    Session.set('timeruOff', localTimerOff-localTimer);
-   
-    
-};
-interval = Meteor.setInterval(timeLeft, 1000)
-
 
 vis = (function(){
     var stateKey, eventKey, keys = {
@@ -51,6 +36,24 @@ vis = (function(){
         return !document[stateKey];
     }
 })();
+
+var timeLeft = function() {
+    if(vis())
+    {
+        timer++
+        Session.set('timeru', localTimer++);
+    }
+
+    localTimerOff++;
+    Session.set('timeruOff', localTimerOff-localTimer);
+    //console.log("timeOff:"+Session.get('timeruOff')+"/"+"timeOn:"+Session.get('timeru'))
+   
+    
+};
+interval = Meteor.setInterval(timeLeft, 1000)
+
+
+
 
 Template.links.helpers({
     links: function() {
@@ -240,7 +243,7 @@ Template.links.events({
                 }
                 //set the current link
                 currentLink = this._id;
-           
+                Session.set('subject', this.title)
                 currentLINK = $(e.currentTarget).data("url")
                 
                 //change the value of the frame
