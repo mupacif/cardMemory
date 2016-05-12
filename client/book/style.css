@@ -1,5 +1,4 @@
 html {
-    
     height: 100hv;  
 }
 
@@ -42,6 +41,10 @@ Header {
     width: calc(100% - 300px);
     color: bisque;
     box-shadow: 0 0 7px rgba(0, 0, 0, 2);   
+}
+
+Header input{
+    color:black;
 }
 
 h2 {
@@ -131,5 +134,13 @@ h5 {
 
 iframe{
     border:none;
+    width:100%;
+}
 
+.timeOn{
+    color:green;
+}
+
+.timeOff{
+    color:red;
 }

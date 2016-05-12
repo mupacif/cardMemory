@@ -1,15 +1,25 @@
+//temp global passée sur une matière
 var timer = 0;
+//temps passé activement sur une matière
 var localTimer=0;
-var state = 0;
+//temps passé hors d'une matière
+var localTimerOff=0;
+
+//id du chapitre courant
 var currentLink = null;
+
+Session.setDefault('subject');
 Session.setDefault('timeru', localTimer);
+Session.setDefault('timeruOff', localTimerOff);
 var timeLeft = function() {
     if(vis())
     {
         timer++
         Session.set('timeru', localTimer++);
     }
-    
+    localTimerOff++;
+    Session.set('timeruOff', localTimerOff-localTimer);
+   
     
 };
 interval = Meteor.setInterval(timeLeft, 1000)
@@ -45,8 +55,15 @@ Template.links.helpers({
 Template.book.helpers({
     timer:  function() {
             return Session.get('timeru');
+        },
+         timerOff:  function() {
+            return Session.get('timeruOff');
+        },
+        
+        subject:  function() {
+            return Session.get('subject');
         }
-    
+   
 
 });
 /**
@@ -99,6 +116,20 @@ Template.links.events({
                                 during: timer
                             }
                         });
+               
+                    var history =
+                    {
+                        'subjectId':currentLink,
+                        'subject':Session.get('subject'),
+                        'matiere': $("#subject").val(),
+                        'date':new Date(),
+                        'timerOn':localTimer,
+                        'timerOff':localTimerOff
+                        
+                    }
+                    
+                    console.log(history)
+                        
                     }
                     else {
 
@@ -134,6 +165,7 @@ Template.links.events({
                     //get the new time
                     timer = data.during;
                     localTimer=0;
+                    localTimerOff=0;
                     //console.log("timer:" + timer)
                 }
                 else {
@@ -148,11 +180,12 @@ Template.links.events({
                         }
                     });
                     //
+                   
                     //alert("not in time lol")
                 }
                 //set the current link
                 currentLink = this._id;
-
+                 Session.set('subject', data.title);
                 //change the value of the frame
                 $("#frameDemo").attr("src", $(e.currentTarget).data("url"));
 
@@ -232,3 +265,17 @@ Template.new.events({
 
 });
 //--- /commentForm ---
+
+closingWindow = function(){
+    
+                        book.update({
+                        _id: currentLink
+                    }, {
+                        $set: {
+                            during: timer
+                        }
+                    });
+                    
+                
+ 
+}
