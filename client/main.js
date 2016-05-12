@@ -8,11 +8,36 @@
 
      Meteor.subscribe("book");
       Meteor.subscribe("time");
+      Meteor.subscribe("bookHistory");
   }
   
  
   );
   
+      Template.history.onCreated( function() {
+
+     Meteor.subscribe("bookHistory");
+
+  }
+  
+  
+ 
+  );
+  
+        Template.localHistory.onCreated( function() {
+
+     Meteor.subscribe("bookHistory");
+
+  }
+  
+  
+ 
+  );
+  
+  /**
+   * Lanche un event quand l'utilisateur quitte la page
+   * uitilité: sauvegarder avant qu'il quitte
+   */
   Template.book.onCreated( function() {
 
   Meteor.startup(function(){

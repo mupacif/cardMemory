@@ -7,10 +7,18 @@ var localTimerOff=0;
 
 //id du chapitre courant
 var currentLink = null;
+var currentLINK = "/books";
+//working data
+var watchingHistory = false;
 
+//UI data
 Session.setDefault('subject');
+//timer when active
 Session.setDefault('timeru', localTimer);
+//timer when off
 Session.setDefault('timeruOff', localTimerOff);
+
+
 var timeLeft = function() {
     if(vis())
     {
@@ -66,6 +74,30 @@ Template.book.helpers({
    
 
 });
+
+Template.book.events({
+'dblclick header':function()
+{
+    watchingHistory = !watchingHistory;
+   // alert(watchingHistory?"you watching history":"you are not")
+    if(watchingHistory)
+    {
+        //si page d'acceuil ou non 
+        if(currentLink)
+        //local
+     $("#frameDemo").attr("src","/books/localStory/"+currentLink);
+     else
+     //tous les liens
+     $("#frameDemo").attr("src","/books/story");
+    }
+    else
+    {
+    $("#frameDemo").attr("src",currentLINK);
+    }
+}
+   
+
+});
 /**
  * Format text
  */
@@ -80,6 +112,28 @@ UI.registerHelper('hms',function(sec_num){
     if (seconds < 10) {seconds = "0"+seconds;}
     
     return hours+':'+minutes+':'+seconds;
+    
+});
+/**
+*Format time
+*//**
+ * d.toLocaleString()
+ *
+ */
+ 
+ UI.registerHelper('localString',function(date){ 
+
+    
+    return date.toLocaleString();
+    
+});
+/**
+ * Pourcentage
+ */
+ UI.registerHelper('pct',function(nb1,nb2){ 
+
+    nb=nb1-nb2;
+    return (1-nb/nb1)*100|0;
     
 });
 /**
@@ -128,6 +182,7 @@ Template.links.events({
                         
                     }
                     
+                    bookHistory.insert(history)
                     console.log(history)
                         
                     }
@@ -185,9 +240,11 @@ Template.links.events({
                 }
                 //set the current link
                 currentLink = this._id;
-                 Session.set('subject', data.title);
+           
+                currentLINK = $(e.currentTarget).data("url")
+                
                 //change the value of the frame
-                $("#frameDemo").attr("src", $(e.currentTarget).data("url"));
+                $("#frameDemo").attr("src",currentLINK);
 
 
 
@@ -265,7 +322,9 @@ Template.new.events({
 
 });
 //--- /commentForm ---
-
+/**
+ * Save when someone close window
+ */
 closingWindow = function(){
     
                         book.update({
@@ -279,3 +338,25 @@ closingWindow = function(){
                 
  
 }
+
+//----- History of timer ----
+Template.history.helpers({
+    stories:function()
+    {
+        var history = bookHistory.find({}, {sort: {date: -1}})
+        console.log(history)
+        return history;
+    }
+});
+
+Template.localHistory.helpers({
+    stories:function()
+    {
+        var id = Template.currentData().id;
+        if(id)
+        {
+        var history = bookHistory.find({"subjectId":id}, {sort: {date: -1}})
+        return history;
+        }
+    }
+});
