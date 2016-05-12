@@ -224,6 +224,7 @@ Template.links.events({
                     timer = data.during;
                     localTimer=0;
                     localTimerOff=0;
+                    $("#subject").val("")
                     //console.log("timer:" + timer)
                 }
                 else {
