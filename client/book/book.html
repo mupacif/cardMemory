@@ -10,18 +10,18 @@
             <h2>Subject :{{ subject }}<input id="subject" name="subject" type="text" size="20" placeholder="Actual Subject" > <span class="timeOn">{{hms timer }}</span><span class="timeOff">({{hms timerOff}})</span></h2>
             
 
-
+ 
         </header>
         <!-- sections : title of book+ Little presentation, title of page -->
-
+ <img id="headpic" src="images/header.png">
         <section id="center">
 
 
-            <iframe src="books" width="100%" height="800px" id="frameDemo"></iframe>
+            <iframe src="books" width="100%" height="800px" id="frameDemo" onLoad="autoResize('frameDemo');"></iframe>
         </section>
         <!-- sections :END -->
         <nav id="navs">
-            <img id="headpic" src="images/header.png">
+          
             {{>new}}
             <ul id="navbar">
                 MENU: 
@@ -68,7 +68,7 @@
 
             //Iframes
             $(".load").click(function() {
-
+             
                 $("#frameDemo").attr("src", $(this).data("url"));
 
             });

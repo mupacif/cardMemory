@@ -246,7 +246,8 @@ Template.links.events({
                 currentLink = this._id;
                 Session.set('subject', this.title)
                 currentLINK = $(e.currentTarget).data("url")
-                
+                         $('.load').removeClass("selected");
+               $(this).addClass("selected")
                 //change the value of the frame
                 $("#frameDemo").attr("src",currentLINK);
 
@@ -364,3 +365,18 @@ Template.localHistory.helpers({
         }
     }
 });
+
+         
+function autoResize(id){
+    console.log("resized")
+    var newheight;
+    var newwidth;
+
+    if(document.getElementById){
+        newheight = document.getElementById(id).contentWindow.document .body.scrollHeight;
+        newwidth = document.getElementById(id).contentWindow.document .body.scrollWidth;
+    }
+
+    document.getElementById(id).height = (newheight) + "px";
+    document.getElementById(id).width = (newwidth) + "px";
+}

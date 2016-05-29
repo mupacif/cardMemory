@@ -1,15 +1,17 @@
 html {
-    height: 100hv;  
+    
 }
 
 body {
     
     width:auto;
-    height: 100hv;
+   
     margin-top: auto;
     margin-left: auto;
     margin-right: auto;
-    margin-bottom: 0px;     
+    margin-bottom: 0px;   
+     height: 100%;
+    overflow: hidden;
 }
 
 #headpic{
@@ -64,6 +66,7 @@ section {
 nav {
      width: 300px;
      height: 100%;
+         
      border-right:5px solid rgba(80,53,53,1); 
      background-color: chocolate;
      display: inline-block;
@@ -82,6 +85,8 @@ nav {
      padding-top: 50px;
      list-style-type:none;
      width: 200px;
+        height: 100%;
+
 }
 
 .parent {
@@ -105,6 +110,8 @@ nav {
 
 #navs {
     position: fixed;
+        overflow: scroll;
+    
 }
 
 ul {
@@ -143,4 +150,8 @@ iframe{
 
 .timeOff{
     color:red;
+}
+
+.selected{
+    color:black!important;
 }
