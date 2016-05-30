@@ -1,5 +1,5 @@
 html {
-    
+
 }
 
 body {
@@ -11,7 +11,11 @@ body {
     margin-right: auto;
     margin-bottom: 0px;   
      height: 100%;
-    overflow: hidden;
+     
+
+}
+::-webkit-scrollbar { 
+    display: none; 
 }
 
 #headpic{
@@ -59,6 +63,8 @@ section {
     padding: 20px;
     width:calc(100% - 330px);
     display: inline-block;
+    height:100%;
+
     
     
 }
@@ -73,6 +79,7 @@ nav {
      vertical-align: top;
      margin-left: 40px;
      margin-right: 0px;
+     margin-top: -20px;
      position: fixed;
      right: 0;
      box-shadow: 0 0 10px rgba(0,0,0,0.5); 
