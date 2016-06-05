@@ -20,7 +20,13 @@
 
   }
   
-  
+ 
+  );
+        Template.chartsHistory.onCreated( function() {
+
+     Meteor.subscribe("bookHistory");
+
+  }
  
   );
   

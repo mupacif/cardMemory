@@ -107,9 +107,12 @@
 </template>
 
 <template name="history">
+
     sujets <br>
 
+<div id="chartContainer">
 
+  </div>
 
          <table class="table table-bordered">
     <thead>
@@ -122,14 +125,22 @@
     <tbody>
         {{#each stories}}
        <tr>
-           <td>{{ localString date}} </td>
+           <td>{{ date}} </td>
            <td> {{subject}} ~ {{#if matiere}}{{matiere}}{{else}}  reading {{/if}} </td>
            <td>{{hms timerOff}}({{pct timerOff timerOn}}% time of work) </td>
         </tr>
-       {{/each}}
+     {{/each}}
     </tbody>
 </table>
 </template>
+
+<template name="chartsHistory">
+  heeuui
+<div id="chartContainer">
+    heeuui
+
+  </div>
+ </template>
 
 <template name="localHistory">
     sujets <br>
