@@ -125,7 +125,7 @@
     <tbody>
         {{#each stories}}
        <tr>
-           <td>{{ date}} </td>
+           <td>{{hms date}} </td>
            <td> {{subject}} ~ {{#if matiere}}{{matiere}}{{else}}  reading {{/if}} </td>
            <td>{{hms timerOff}}({{pct timerOff timerOn}}% time of work) </td>
         </tr>
