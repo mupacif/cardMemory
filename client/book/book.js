@@ -390,8 +390,8 @@ Template.history.events({
                 maxDate=d.date;
                 
             minDate=d.date;
-            data.push({"Shift":"Early","Date":d3time(d.date),"Value":d.timerOn})});
-    //   console.log(minDate+"/"+maxDate)
+            data.push({"Shift":d.subject,"Date":d3time(d.date),"Value":d.timerOn,"tum tum":"kiki"})});
+         //console.log(dt)
        var svg = dimple.newSvg("#chartContainer", 1000, 600);
  
      // The default data set for these examples has regular times
