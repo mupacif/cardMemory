@@ -1,0 +1,23 @@
+<!-- main layout -->
+<template name="insertThinkBetter">
+          <fieldset id="field">
+              <legend>My thoughts describes my world</legend>
+
+  <p>Think<Br>
+   <textarea id="comment" name="Coment" cols="40" rows="3" placeholder="What do I think?"></textarea></p>
+    <input id="level" type="range" min="0" max="10" />
+  <p><input id="send" type="submit" value="Post">
+   <input id="clear" type="reset" value="Clear"></p>
+   </fieldset>
+
+</template>
+
+<template name="showThinkBetter">
+hello 
+
+    {{#each thoughs}}
+        {{think}}:{{nameMood level}}<br>
+    {{/each}}
+   
+;{{didy}}
+</template>
