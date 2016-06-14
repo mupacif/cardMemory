@@ -12,6 +12,11 @@ idc.reverse();
 
 Template.insertThinkBetter.events({
 
+'change #level': function(e) {
+  //  alert("changed")
+    var level=parseInt($('#level').val());
+            $("#mood").text(idc[level])
+},
     'click #send': function(e) {
           e.preventDefault();
           var comment = $("#comment").val()
