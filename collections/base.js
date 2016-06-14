@@ -21,3 +21,9 @@ time = new Mongo.Collection("timejs");
 */
 
 bookHistory = new Mongo.Collection("bookHistoryJs");
+
+/*
+* thinkBetter  14/06/16
+*/
+
+thinkBetter = new Mongo.Collection("thinkBetterJs");

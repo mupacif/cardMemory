@@ -40,6 +40,20 @@
  
   );
   
+
+  
+    Template.insertThinkBetter.onCreated(function() 
+    {
+     Meteor.subscribe("thinkBetter");
+    }
+  );
+  
+    Template.showThinkBetter.onCreated( function() {
+     Meteor.subscribe("thinkBetter");
+     console.log("ghehghe")
+  }
+  );
+  
   /**
    * Lanche un event quand l'utilisateur quitte la page
    * uitilité: sauvegarder avant qu'il quitte

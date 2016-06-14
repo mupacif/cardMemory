@@ -35,7 +35,15 @@ Meteor.publish("bookHistory", function()
 return bookHistory.find();
 
 });
+/**
+ * 14/06/16
+ * Table Memoire et niveau de stress
+ */
+Meteor.publish("thinkBetter", function()
+{
+return thinkBetter.find();
 
+});
  
 Meteor.methods({
 'insertPost'(doc)
