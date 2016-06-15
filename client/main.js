@@ -50,7 +50,7 @@
   
     Template.showThinkBetter.onCreated( function() {
      Meteor.subscribe("thinkBetter");
-     console.log("ghehghe")
+    
   }
   );
   
