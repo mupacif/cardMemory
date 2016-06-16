@@ -75,14 +75,21 @@
   }
   );
   Template.inside.events( {
-    'click .parent': function(e) {
+    'dblclick .parent': function(e) {
       //this contiont answer/question
       //event e d'autres éléments plus important
       e.preventDefault();
       $(e.currentTarget).siblings('.parent').find('.child').slideUp();
       $(e.currentTarget).find(".child").slideToggle();
       //$(".child").slideToggle();
-    }
+    },
+/**
+* Recupère la valeur du boutton la transfere sur la jauge puis simule in clic
+*/
+    'click .btn':function(e){
+	$("#"+this._id).val(parseInt($(e.currentTarget).val()))
+	$("#"+this._id).trigger("click");
+	}
   }
   );
   Template.form.events( {

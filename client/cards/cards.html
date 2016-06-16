@@ -28,7 +28,7 @@
       <label for="comment">Answer:</label>
       <textarea class="form-control" rows="5" id="answer"></textarea>
     </div>
-    <input id="level" type="range" min="0" max="99" />
+    <input id="level" type="hidden" min="0" max="99" />
     <output id="rangevalue">50</output>
 
     <br>
@@ -81,8 +81,18 @@
     <br>
     <div class="child"><pre> answer : {{answer}}</pre>
       <br>
+
+
+    <div class="btn-group">
+  <button type="button" class="btn btn-primary" value="0">Ne connais pas</button>
+  <button type="button" class="btn btn-primary" value="20">1 jour</button>
+  <button type="button" class="btn btn-primary" value="40">2 jours</button>
+  <button type="button" class="btn btn-primary" value="60">1 semaine</button>
+  <button type="button" class="btn btn-primary" value="80">2 semaines</button>
+  <button type="button" class="btn btn-primary" value="100">1 mois</button>
+</div>
     </div>
-    <input id="{{_id}}" class="level" type="range" min="0" max="99" value="{{level}}" />
+    <input id="{{_id}}" class="level" type="hidden" min="0" max="99" value="{{level}}" />
     <div class="progress">
       <div class="progress-bar progress-bar-info" role="progressbar" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100" style="width:{{level}}%">
         {{level}}% Complete

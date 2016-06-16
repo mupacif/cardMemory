@@ -2,14 +2,15 @@ var idc =["Elévé",
 "Complet/Comblé/Reconnaissant",
 "Confiant/Fier",
 "Appliqué/Engagé",
-"Joyeux","Calme",
+"Joyeux",
+"Calme",
 "Impatient/Pressé",
 "Perdu/Confus",
 "Stréssé/Dépassé",
 "Anxieux/désabusé/fermé",
 "Evitant/Déprimé"];
 idc.reverse();
-
+var chartsOn;
 Template.insertThinkBetter.events({
 
 'change #level': function(e) {
@@ -41,14 +42,20 @@ Template.insertThinkBetter.events({
      'click #clear': function(e) {
           e.preventDefault();
            $("#comment").val("")
-    }
+    },
+	'click .btn':function(e){
+	   $("#level").val(parseInt($(e.currentTarget).val()))
+	  // console.log($(e.currentTarget).val());
+	  //console.log("hello")	
+}
     
     });
     
     Template.showThinkBetter.helpers({
-         thoughs:function(){
+      thoughs:function(){
             var History=thinkBetter.find({}, {sort: {date: -1}});
-            History.fetch()
+            History=History.fetch()
+
    
      
             return History;
@@ -58,50 +65,67 @@ Template.insertThinkBetter.events({
     
      Template.showThinkBetter.events({ 
          
-         'dblclick':function()
+         'click, touchstart #showGraph':function()
     {
-   
-   chartsOn = !chartsOn;
-   if(chartsOn)
+ //	console.log("yolo")  
+  if(chartsOn)
    {
-    $("#thinkContainer").html("");
+    //$("#thinkContainer").html("Chart");
     return
    }
+  chartsOn = true;
+   // $("#thinkContainer").html("");
    
     var History=thinkBetter.find({}, {sort: {date: -1}});
-            History.fetch()
+    History=History.fetch()
             //
+  var minDate,maxDate;
             var data = [];
-        History.forEach(function (d) {
-            data.push({"Shift":d.think,"Date":d3time(d.date),"Value":d.level})});
-         //console.log(dt)
+       History.forEach(function(d){
+  if(!maxDate)
+                maxDate=d.time;
+                
+            minDate=d.time;
+          data.push({"Shift":d.think,"Date":d3time(d.time),"Value":d.level,"rawDate":d.time})
+});
        
+      console.log(data);	
                 var svg = dimple.newSvg("#thinkContainer", 590, 400);
 
-        data.forEach(function (d) {
+       data.forEach(function (d) {
         d["Day"] = d["Date"].substring(0, d["Date"].length - 6);
+	console.log(d.rawDate)
         d["Time of Day"] =
-            "2000-01-01 " + d["Date"].substring(d["Date"].length - 5);
+            d.rawDate.toLocaleDateString()+" "+ d["Date"].substring(d["Date"].length - 5);
     }, this);
       // Filter for a single SKU and Channel
      // data = dimple.filterData(data, "SKU", "Theta 18 Pack Standard");
      // data = dimple.filterData(data, "Channel", "Hypermarkets");
 
       // Create and Position a Chart
+      
       var myChart = new dimple.chart(svg, data);
       myChart.setBounds(60, 30, 500, 300);
       //var x = myChart.addCategoryAxis("x", "Month")
-       var x = myChart.addTimeAxis("x", "Day", "%d %b %Y", "%d %b");
-      myChart.addMeasureAxis("y", "Value");
-
+  //    var x = myChart.addTimeAxis("x", "Day", "%d %b %Y", "%d %b");
+     var x = myChart.addTimeAxis("x", "Time of Day","%d/%m/%Y %H:%M", "%d/%m");
+	  var y= myChart.addAxis("y", "Value");
+	
+    x.overrideMin = maxDate;
+    x.overrideMax = minDate;
+   // y.overrideMin =0;
+   // y.overrideMax = 10;
+   
       // Order the x axis by date
       x.addOrderRule("Date");
-
+  	 x.timePeriod = d3.time.days;
+    x.timeInterval = 1; 
       // Min price will be green, middle price yellow and max red
       myChart.addColorAxis("Value", ["orange", "yellow", "green"]);
 
       // Add a thick line with markers
       var lines = myChart.addSeries(null, dimple.plot.line); 
+      lines = myChart.addSeries("Shift", dimple.plot.line); 
       lines.lineWeight = 5;
       lines.lineMarkers = true;
 

@@ -6,6 +6,19 @@
   <p>Think<Br>
    <textarea id="comment" name="Coment" cols="40" rows="3" placeholder="What do I think?"></textarea></p>
     <input id="level" type="range" min="0" max="10" />
+    <div class="btn-group">
+       <button type="button" class="btn btn-primary" value="0">Evitant/Déprimé</button>
+  <button type="button" class="btn btn-primary" value="1">Anxieux/désabusé/fermé</button>
+  <button type="button" class="btn btn-primary" value="2">Stressé/Dépassé</button>
+    <button type="button" class="btn btn-primary" value="3">Perdu/Confus</button>
+  <button type="button" class="btn btn-primary" value="4">Impatient/Pressé</button>
+  <button type="button" class="btn btn-primary" value="5">Calme</button>
+    <button type="button" class="btn btn-primary" value="6">Joyeux</button>
+  <button type="button" class="btn btn-primary" value="7">Appliqué/Engagé</button>
+  <button type="button" class="btn btn-primary" value="8">Confiant/Fier</button>
+    <button type="button" class="btn btn-primary" value="9">Comple/Comblé/Reconnaissant</button>
+  <button type="button" class="btn btn-primary" value="10">Elevé</button>
+</div>
   <p><input id="send" type="submit" value="Post">
    <input id="clear" type="reset" value="Clear"></p>
    </fieldset>
@@ -15,14 +28,14 @@
 
 <template name="showThinkBetter">
 <a href="/thinkBetter">Insert</a><br>
-
+<span id="showGraph">Show chart</span>
 <div id="thinkContainer">
-    hehe
-  </div>
-    {{#each thoughs}}
+    "Chart"
+</div>
+<!---{{#each thoughs}}
         {{think}}:{{nameMood level}}<br>
-    {{/each}}
+    {{/each}}-->
    
-;
+
 </template>
 
